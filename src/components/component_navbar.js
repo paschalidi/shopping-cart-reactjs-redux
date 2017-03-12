@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-export default class NavigationBar extends Component {
+class NavigationBar extends Component {
   render() {
     return (
       <div className="component-navbar">
@@ -16,7 +16,7 @@ export default class NavigationBar extends Component {
               <div className="collapse navbar-collapse">
                 <ul className="nav navbar-nav navbar-right">
                   <p className="navbar-text">
-                    <span className="badge">{} number of items</span>
+                    <span className="badge">{this.props.itemCounter}</span>
                   </p>
                 </ul>
               </div>
@@ -27,3 +27,7 @@ export default class NavigationBar extends Component {
     );
   }
 }
+function mapsStateToProps(state) {
+  return { itemCounter: state.itemCounter }
+}
+export default connect(mapsStateToProps)(NavigationBar)
