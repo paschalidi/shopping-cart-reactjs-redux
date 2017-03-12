@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Card from './component_card'
+import CartList from './component_cart_list'
 
 class ContentComponent extends Component {
   renderCards(items) {
@@ -25,7 +26,7 @@ class ContentComponent extends Component {
           </div>
 
           <div className="col-sm-3">
-            component with list of basket items goes here
+            <CartList />
           </div>
         </div>
       </div>
