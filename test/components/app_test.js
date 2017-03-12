@@ -1,14 +1,18 @@
-import { renderComponent , expect } from '../test_helper';
-import App from '../../src/components/app';
+import { renderComponent, expect } from '../test_helper';
+import app from '../../src/components/app';
 
-describe('App' , () => {
+describe('component_app', () => {
   let component;
 
   beforeEach(() => {
-    component = renderComponent(App);
+    component = renderComponent(app);
   });
-
-  it('renders something', () => {
-    expect(component).to.exist;
-  });
+  describe('contains child components', () => {
+    it('component_navbar', () => {
+      expect(component.find('.component-navbar')).to.exist;
+    });
+    it('component_content', () => {
+      expect(component.find('.component-content')).to.exist;
+    });
+  })
 });
