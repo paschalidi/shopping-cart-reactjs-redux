@@ -1,11 +1,11 @@
 import { renderComponent, expect } from '../test_helper';
-import NavigationBar from '../../src/components/component_navbar';
+import ComponentNavigationBar from '../../src/components/component_navbar';
 
 describe('component_navbar', () => {
   let component;
 
   beforeEach(() => {
-    component = renderComponent(NavigationBar);
+    component = renderComponent(ComponentNavigationBar);
   });
 
   describe('contains child components', () => {
