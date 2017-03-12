@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-export default class CardComponent extends Component {
+class CardComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -15,6 +17,10 @@ export default class CardComponent extends Component {
     }
   }
 
+  handleItemAddition() {
+    this.props.addItemToCart(this.state.title);
+  }
+
   render() {
     return (
       <div className="component-card">
@@ -25,7 +31,8 @@ export default class CardComponent extends Component {
               <h4>{this.state.title}</h4>
               <p>{this.state.description}</p>
               <p>Price: {this.state.price}</p>
-              <button className="btn btn-success bottom-left">
+              <button className="btn btn-success bottom-left"
+                      onClick={this.handleItemAddition.bind(this)}>
                 Add robot to Cart
               </button>
             </div>
@@ -35,3 +42,5 @@ export default class CardComponent extends Component {
     );
   }
 }
+
+export default connect(null, actions)(CardComponent)
