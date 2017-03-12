@@ -20,4 +20,8 @@ describe('AComponent', () => {
     describe('must have text', () => {
     })
   });
+
+  describe('data simulation', () => {
+  });
+
 });
