@@ -54,12 +54,13 @@ describe('component_content', () => {
     });
 
     describe('must have text', () => {
-    })
+    });
   });
 
   // todo fix this
-  it('has 2 items', () => {
-    console.log(component.find('.component-card').length);
-    expect(component.find('.component-card').length).to.equal(2);
+  describe('data simulation', () => {
+    it('has 50 items', () => {
+      expect(component.find('.component-card').length).to.equal(50);
+    });
   });
 });
