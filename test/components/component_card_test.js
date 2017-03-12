@@ -8,10 +8,6 @@ describe('component_card', () => {
     component = renderComponent(CardComponent);
   });
 
-  describe('contains child components', () => {
-    //todo test child component if any
-  });
-
   describe('html, style and text', () => {
 
     describe('must have class', () => {

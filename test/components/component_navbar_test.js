@@ -5,11 +5,10 @@ describe('component_navbar', () => {
   let component;
 
   beforeEach(() => {
-    component = renderComponent(ComponentNavigationBar);
-  });
-
-  describe('contains child components', () => {
-    //todo test child component if any
+    const props = {
+      itemCounter: 7,
+    };
+    component = renderComponent(ComponentNavigationBar, null, props);
   });
 
   describe('html, style and text', () => {
@@ -56,6 +55,14 @@ describe('component_navbar', () => {
       it('Shopping Chart', () => {
         expect(component.find('.navbar-brand')).to.contain('Shopping Chart')
       });
-    })
+    });
+
+    describe('data simulation', () => {
+      it('has the correct number of items', () => {
+        expect(component.find('.badge')).to.contain(7);
+      });
+
+    });
   })
-});
+})
+;
