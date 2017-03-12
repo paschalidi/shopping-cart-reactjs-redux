@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import Card from './component_card'
 
 class ContentComponent extends Component {
   renderCards(items) {
     return items.map((item, index) => {
-
+      return <Card />
     })
   }
 
