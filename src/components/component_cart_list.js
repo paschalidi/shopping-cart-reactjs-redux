@@ -17,12 +17,15 @@ class ItemListComponent extends Component {
 
   render() {
     return (
-      <ul className="component-items-list list-group">
-        {/*todo add state here*/}
-        <h3>Items in the Basket: </h3>
-        <h4>Price: $</h4>
-        {this.renderItemsIntoAList(this.props.itemsInsideCart)}
-      </ul>
+      <div className="component-cart-list">
+        <ul className="list-group">
+          <h3>Items in the Basket: {this.props.itemCounter}</h3>
+          <h4 className="price">Price: ${this.props.totalPrice}</h4>
+          <h4 className="discounted-price">Discounted Price: ${this.props.totalDiscountedPrice}</h4>
+          <h5>You got discount of ${this.props.totalPrice - this.props.totalDiscountedPrice}</h5>
+          {this.renderItemsIntoAList(this.props.itemsInsideCart)}
+        </ul>
+      </div>
     );
   }
 }
@@ -30,6 +33,9 @@ class ItemListComponent extends Component {
 function mapsStateToProps(state) {
   return {
     itemsInsideCart: state.itemsInsideCart,
+    itemCounter: state.itemCounter,
+    totalPrice: state.totalPrices.totalPrice,
+    totalDiscountedPrice: state.totalPrices.totalDiscountedPrice
   }
 }
 export default connect(mapsStateToProps)(ItemListComponent)
