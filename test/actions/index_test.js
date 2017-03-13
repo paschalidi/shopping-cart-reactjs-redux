@@ -28,6 +28,11 @@ describe('Actions', () => {
       const action = calculateItemsQuantity();
       expect(action.type).to.equal(CART_ITEM_COUNTER)
     });
+    it('must have correct payload', () => {
+      const action = calculateItemsQuantity();
+      expect(action.payload).to.eql(undefined)
+    });
+
   });
 
   describe('calculateTotalPrices', () => {
@@ -37,7 +42,7 @@ describe('Actions', () => {
     });
     it('must have correct payload', () => {
       let action;
-      action =calculateTotalPrices(50, 40, false);
+      action = calculateTotalPrices(50, 40, false);
       expect(action.payload).to.eql({
         totalPrice: 50,
         discountedPrice: 50
