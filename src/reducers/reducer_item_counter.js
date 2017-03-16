@@ -1,4 +1,4 @@
-import { CART_ITEM_COUNTER } from '../actions/types'
+import { CART_ITEM_COUNTER } from '../actions/types';
 
 const INITIAL_STATE = 0;
 

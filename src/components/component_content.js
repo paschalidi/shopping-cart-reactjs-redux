@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import Card from './component_card'
-import CartList from './component_cart_list'
+import { connect } from 'react-redux';
+
+import Card from './component_card';
+import CartList from './component_cart_list';
 
 class ContentComponent extends Component {
   renderCards(items) {

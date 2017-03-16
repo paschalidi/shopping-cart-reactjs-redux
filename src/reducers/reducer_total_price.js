@@ -1,4 +1,4 @@
-import { TOTAL_PRICE } from '../actions/types'
+import { TOTAL_PRICE } from '../actions/types';
 
 const INITIAL_STATE = { totalPrice: 0, totalDiscountedPrice: 0 };
 
