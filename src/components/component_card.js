@@ -5,7 +5,10 @@ import * as actions from '../actions';
 class CardComponent extends Component {
   constructor(props) {
     super(props);
-
+    // move this whole state to a reducer and trigger actions accordingly
+    // this way you will keep the logic of the application only to
+    // the level of the reducers and not the component level.
+    
     this.state = {
       id: this.props.id,
       title: this.props.title,
