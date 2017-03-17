@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import CardMessage from './component_card_message'
 
 class CardComponent extends Component {
   constructor(props) {
@@ -39,28 +40,6 @@ class CardComponent extends Component {
     this.props.calculateTotalPrices(this.state.price, this.state.priceAfterDiscount, this.state.isDiscounted)
   }
 
-  renderPriceAndDiscountMessage() {
-    if (this.state.isDiscounted) {
-      return (
-        <div>
-          <p>Discounted Price : from {this.state.price}$ to {this.state.priceAfterDiscount}$</p>
-          <p>You are getting {this.state.discount}% for every item you buy! Awesome!</p>
-        </div>
-      )
-    }
-    else {
-      return (
-        <div>
-          <p>Price: {this.state.price} $</p>
-          <p>
-            Buy {this.state.itemsUntilDiscount} more and GET {this.state.discount}% DISCOUNT for
-            the next items of this kind!
-          </p>
-        </div>
-      )
-    }
-  }
-
   render() {
     return (
       <div className="component-card">
@@ -70,7 +49,13 @@ class CardComponent extends Component {
             <div className="caption">
               <h4>{this.state.title}</h4>
               <p>{this.state.description}</p>
-              {this.renderPriceAndDiscountMessage()}
+              <CardMessage
+                priceAfterDiscount = {this.state.priceAfterDiscount}
+                itemsUntilDiscount = {this.state.itemsUntilDiscount}
+                isDiscounted = {this.state.isDiscounted}
+                price = {this.state.price}
+                discount = {this.state.discount}
+              />
               <button className="btn btn-success bottom-left"
                       onClick={this.handleItemAddition.bind(this)}>
                 Add robot to Cart
