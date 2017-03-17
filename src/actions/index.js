@@ -18,8 +18,14 @@ export function calculateItemsQuantity() {
 }
 
 export function calculateTotalPrices(price, priceAfterDiscount, isDiscounted) {
+  if (!isDiscounted)
+    priceAfterDiscount = price;
+
   return {
     type: TOTAL_PRICE,
-    payload: {price, priceAfterDiscount, isDiscounted}
+    payload: {
+      totalPrice: price,
+      discountedPrice: priceAfterDiscount
+    }
   };
 }
