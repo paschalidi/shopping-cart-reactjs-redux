@@ -1,7 +1,8 @@
 import {
   ADD_ITEM_TO_CART,
   CART_ITEM_COUNTER,
-  TOTAL_PRICE
+  TOTAL_PRICE,
+  UPDATE_CARD
 } from './types';
 
 export function addItemToCart(title) {
@@ -27,5 +28,12 @@ export function calculateTotalPrices(price, priceAfterDiscount, isDiscounted) {
       totalPrice: price,
       discountedPrice: priceAfterDiscount
     }
+  };
+}
+
+export function updateCard(id, price, discount, itemsUntilDiscount) {
+  return {
+    type: UPDATE_CARD,
+    payload: { id, price, discount, itemsUntilDiscount }
   };
 }
