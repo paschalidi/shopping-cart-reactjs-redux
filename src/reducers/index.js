@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   items: DummyDataReducer,
   itemsInsideCart: AddToCartReducer,
   itemCounter: ItemCounterReducer,
-  totalPrices: TotalPriceReducer
+  summurizedPrices: TotalPriceReducer
 });
 
 export default rootReducer;
