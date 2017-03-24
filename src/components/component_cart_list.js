@@ -34,8 +34,8 @@ function mapsStateToProps(state) {
   return {
     itemsInsideCart: state.itemsInsideCart,
     itemCounter: state.itemCounter,
-    totalPrice: state.totalPrices.totalPrice,
-    totalDiscountedPrice: state.totalPrices.totalDiscountedPrice
+    summurizedPrice: state.totalPrices.summurizedPrice,
+    summurizedFinalPrice: state.totalPrices.summurizedFinalPrice
   }
 }
-export default connect(mapsStateToProps)(ItemListComponent)
+export default connect(mapsStateToProps)(CartComponent)
