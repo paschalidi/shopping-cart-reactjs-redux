@@ -8,8 +8,8 @@ describe('ComponentCartList', () => {
       itemsInsideCart: [{ title: 'a title' }, { title: 'another title' }, { title: 'yet another title' }],
       itemCounter: 3,
       summurizedPrices: {
-        summurizedPrice: 50,
-        summurizedFinalPrice: 40
+        originalPrice: 50,
+        finalPrice: 40
       }
     };
     component = renderComponent(ComponentCartList, null, props);
