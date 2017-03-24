@@ -29,19 +29,19 @@ class CartComponent extends Component {
           <div className="panel-body">
             <h5 className="price">
               Original Price
-              <div className="float-right">${this.props.summurizedPrice} </div>
+              <div className="float-right">${this.props.summurizedPrices.originalPrice} </div>
             </h5>
 
             <h5 className="discount">
               Discount
               <div className="float-right">
-                - ${this.props.summurizedPrice - this.props.summurizedFinalPrice}
+                - ${this.props.summurizedPrices.originalPrice - this.props.summurizedPrices.finalPrice}
               </div>
             </h5>
             <hr />
             <h4 className="final-price">
               Final Price
-              <div className="float-right">${this.props.summurizedFinalPrice}</div>
+              <div className="float-right">${this.props.summurizedPrices.finalPrice}</div>
             </h4>
           </div>
         </div>
@@ -59,8 +59,7 @@ function mapsStateToProps(state) {
   return {
     itemsInsideCart:  state.itemsInsideCart,
     itemCounter:      state.itemCounter,
-    summurizedPrice:  state.summurizedPrices.summurizedPrice,
-    summurizedFinalPrice:  state.summurizedPrices.summurizedFinalPrice,
+    summurizedPrices:  state.summurizedPrices,
   }
 }
 export default connect(mapsStateToProps)(CartComponent)
