@@ -1,7 +1,7 @@
 import { renderComponent, expect } from '../test_helper';
 import ComponentCartList from '../../src/components/component_cart_list';
 
-describe('ComponentCartList', () => {
+describe('component_cart_list', () => {
   let component;
   beforeEach(() => {
     const props = {

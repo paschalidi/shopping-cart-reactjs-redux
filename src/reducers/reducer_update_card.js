@@ -7,7 +7,6 @@ const INITIAL_STATE =
       isDiscounted: false,
       priceAfterDiscount: 0,
       itemsUntilDiscount: 0,
-      itemsBought: 0
     }
   };
 
