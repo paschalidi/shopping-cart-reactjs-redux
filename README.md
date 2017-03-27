@@ -1,11 +1,11 @@
-#shopping-cart-reactjs-redux
+# shopping-cart-reactjs-redux
 
-###Boilerplate used for this project 
+### Boilerplate used for this project 
 A very simple [ReactJS and Redux Boilerplate](https://github.com/StephenGrider/ReduxSimpleStarter) 
 is being used for this project.
 
 
-###Getting Started
+### Getting Started
 Instruction for clonning, installing dependencies and running the server locally.
 ```
 	> git clone https://github.com/paschalidi/shopping-cart-reactjs-redux.git <your-folder-name>
@@ -14,7 +14,7 @@ Instruction for clonning, installing dependencies and running the server locally
 	> npm start
 ```
 
-###Run Tests
+### Run Tests
  
 ```
     To run the tests once.
