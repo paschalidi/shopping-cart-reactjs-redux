@@ -5,15 +5,31 @@ import CartList from './component_cart_list'
 
 class ContentComponent extends Component {
   renderCards(items) {
-    return items.map((item, index) => {
-      return <Card key={index}
+    return items.map(item => {
+      if (this.props.card[item.id]) {
+        let card = this.props.card[item.id];
+
+        return <Card key={item.id}
+                     id={item.id}
+                     title={item.title}
+                     image={item.image}
+                     price={item.price}
+                     discount={item.discount}
+                     description={item.description}
+                     itemsUntilDiscount={card.itemsUntilDiscount}
+                     isDiscounted={card.isDiscounted}
+                     priceAfterDiscount={card.priceAfterDiscount}
+        />
+      }
+      return <Card key={item.id}
                    id={item.id}
                    title={item.title}
                    image={item.image}
                    price={item.price}
-                   itemsUntilDiscount={item.itemsUntilDiscount}
                    discount={item.discount}
-                   description={item.description} />
+                   description={item.description}
+                   itemsUntilDiscount={item.itemsUntilDiscount}
+      />
     })
   }
 
@@ -36,7 +52,8 @@ class ContentComponent extends Component {
 
 function mapsStateToProps(state) {
   return {
-    items: state.items
+    items: state.items,
+    card: state.card,
   }
 }
 

@@ -2,12 +2,14 @@ import { expect } from '../test_helper'
 import {
   ADD_ITEM_TO_CART,
   CART_ITEM_COUNTER,
-  TOTAL_PRICE
+  TOTAL_PRICE,
+  UPDATE_CARD
 } from '../../src/actions/types'
 import {
   addItemToCart,
   calculateItemsQuantity,
-  calculateTotalPrices
+  calculateTotalPrices,
+  updateCard
 } from '../../src/actions/index'
 
 describe('Actions', () => {
@@ -52,6 +54,23 @@ describe('Actions', () => {
         totalPrice: 50,
         discountedPrice: 40
       })
+    });
+  });
+
+  describe('updateCard', () => {
+    it('must have correct type', () => {
+      const action = updateCard();
+      expect(action.type).to.eql(UPDATE_CARD)
+    });
+    it('must have correct payload', () => {
+      let action;
+      action = updateCard(4, 50, 40, 7);
+      expect(action.payload).to.eql({
+        id: 4,
+        price: 50,
+        discount: 40,
+        itemsUntilDiscount: 7
+      });
     });
   });
 });

@@ -3,57 +3,30 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class CardComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      id: this.props.id,
-      title: this.props.title,
-      image: this.props.image,
-      price: this.props.price,
-      description: this.props.description,
-      itemsUntilDiscount: this.props.itemsUntilDiscount,
-      discount: this.props.discount,
-
-      timesItemIsInCart: 0,
-      isDiscounted: false,
-      priceAfterDiscount: this.props.price - parseInt((this.props.discount / 100) * this.props.price)
-    }
-  }
-
-  updateState() {
-    this.setState({ timesItemIsInCart: this.state.timesItemIsInCart + 1 });
-
-    if (this.state.itemsUntilDiscount > 0)
-      this.setState({ itemsUntilDiscount: this.state.itemsUntilDiscount - 1 });
-
-    if (this.state.itemsUntilDiscount === 1)
-      this.setState({ isDiscounted: true });
-  }
-
   handleItemAddition() {
-    this.updateState();
-
-    this.props.addItemToCart(this.state.title);
+    let props = this.props;
+    this.props.updateCard(props.id, props.price, props.discount, props.itemsUntilDiscount);
+    this.props.addItemToCart(props.title);
+    this.props.calculateTotalPrices(props.price, props.priceAfterDiscount, props.isDiscounted)
     this.props.calculateItemsQuantity();
-    this.props.calculateTotalPrices(this.state.price, this.state.priceAfterDiscount, this.state.isDiscounted)
   }
 
   renderPriceAndDiscountMessage() {
-    if (this.state.isDiscounted) {
+    let props = this.props;
+    if (props.isDiscounted) {
       return (
         <div>
-          <p>Discounted Price : from {this.state.price}$ to {this.state.priceAfterDiscount}$</p>
-          <p>You are getting {this.state.discount}% for every item you buy! Awesome!</p>
+          <p>Discounted Price : from {props.price}$ to {props.priceAfterDiscount}$</p>
+          <p>You are getting {props.discount}% for every item you buy! Awesome!</p>
         </div>
       )
     }
     else {
       return (
         <div>
-          <p>Price: {this.state.price} $</p>
+          <p>Price: {props.price} $</p>
           <p>
-            Buy {this.state.itemsUntilDiscount} more and GET {this.state.discount}% DISCOUNT for
+            Buy {props.itemsUntilDiscount} more and GET {props.discount}% DISCOUNT for
             the next items of this kind!
           </p>
         </div>
@@ -66,10 +39,10 @@ class CardComponent extends Component {
       <div className="component-card">
         <div className="col-sm-6 col-md-4">
           <div className="thumbnail fixed-height-thumbnail">
-            <img src={this.state.image} alt="Something went wrong." />
+            <img src={this.props.image} alt="Something went wrong." />
             <div className="caption">
-              <h4>{this.state.title}</h4>
-              <p>{this.state.description}</p>
+              <h4>{this.props.title}</h4>
+              <p>{this.props.description}</p>
               {this.renderPriceAndDiscountMessage()}
               <button className="btn btn-success bottom-left"
                       onClick={this.handleItemAddition.bind(this)}>
