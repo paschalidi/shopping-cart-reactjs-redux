@@ -7,9 +7,9 @@ describe('ComponentCartList', () => {
     const props = {
       itemsInsideCart: [{ title: 'a title' }, { title: 'another title' }, { title: 'yet another title' }],
       itemCounter: 3,
-      totalPrices: {
-        totalPrice: 50,
-        totalDiscountedPrice: 40
+      summurizedPrices: {
+        originalPrice: 50,
+        finalPrice: 40
       }
     };
     component = renderComponent(ComponentCartList, null, props);
@@ -23,20 +23,21 @@ describe('ComponentCartList', () => {
       it('list-group', () => {
         expect(component.find('.list-group')).to.exist;
       });
+      it('panel', () => {
+        expect(component.find('.panel')).to.exist;
+        expect(component.find('.panel-default')).to.exist;
+      });
     });
 
     describe('must have element', () => {
       it('ul', () => {
         expect(component.find('ul')).to.exist;
       });
-      it('h3', () => {
-        expect(component.find('h3')).to.exist;
+      it('h5', () => {
+        expect(component.find('h5')).to.exist;
       });
       it('h4', () => {
         expect(component.find('h4')).to.exist;
-      });
-      it('h5', () => {
-        expect(component.find('h5')).to.exist;
       });
     });
 
@@ -45,16 +46,16 @@ describe('ComponentCartList', () => {
         expect(component.find('li').length).to.equal(3);
       });
       it('item counter works correctly', () => {
-        expect(component.find('h3')).to.contain('Items in the Basket: 3');
-      });
-      it('gets discounted correctly', () => {
-        expect(component.find('h5')).to.contain('You got discount of $10');
+        expect(component.find('h3')).to.contain('Items in the Basket:3');
       });
       it('price is correct', () => {
-        expect(component.find('.price')).to.contain('Price: $50');
+        expect(component.find('.price')).to.contain('Original Price$50');
       });
-      it('discounted price is correct', () => {
-        expect(component.find('.discounted-price')).to.contain('Discounted Price: $40');
+      it('discount is correct', () => {
+        expect(component.find('.discount')).to.contain('Discount- $10');
+      });
+      it('final price is correct', () => {
+        expect(component.find('.final-price')).to.contain('Final Price$40');
       });
     });
   });

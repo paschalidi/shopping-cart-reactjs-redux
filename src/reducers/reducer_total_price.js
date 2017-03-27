@@ -1,13 +1,13 @@
-import { TOTAL_PRICE } from '../actions/types'
+import { TOTAL_PRICE } from '../actions/types';
 
-const INITIAL_STATE = { totalPrice: 0, totalDiscountedPrice: 0 };
+const INITIAL_STATE = { originalPrice: 0, finalPrice: 0 };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case TOTAL_PRICE:
       return {
-        totalPrice: state.totalPrice + action.payload.totalPrice,
-        totalDiscountedPrice: state.totalDiscountedPrice + action.payload.discountedPrice
+        originalPrice: state.originalPrice + action.payload.totalPrice,
+        finalPrice: state.finalPrice + action.payload.discountedPrice
       };
   }
   return state

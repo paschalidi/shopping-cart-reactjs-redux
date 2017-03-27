@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-class ItemListComponent extends Component {
+class CartComponent extends Component {
   renderItemsIntoAList(items) {
     return items.map((item, index) => {
       if (item.title)
@@ -18,13 +18,38 @@ class ItemListComponent extends Component {
   render() {
     return (
       <div className="component-cart-list">
+
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title ">
+              Items in the Basket:
+              <div className="float-right">{this.props.itemCounter}</div>
+            </h3>
+          </div>
+          <div className="panel-body">
+            <h5 className="price">
+              Original Price
+              <div className="float-right">${this.props.summurizedPrices.originalPrice} </div>
+            </h5>
+
+            <h5 className="discount">
+              Discount
+              <div className="float-right">
+                - ${this.props.summurizedPrices.originalPrice - this.props.summurizedPrices.finalPrice}
+              </div>
+            </h5>
+            <hr />
+            <h4 className="final-price">
+              Final Price
+              <div className="float-right">${this.props.summurizedPrices.finalPrice}</div>
+            </h4>
+          </div>
+        </div>
+
         <ul className="list-group">
-          <h3>Items in the Basket: {this.props.itemCounter}</h3>
-          <h4 className="price">Price: ${this.props.totalPrice}</h4>
-          <h4 className="discounted-price">Discounted Price: ${this.props.totalDiscountedPrice}</h4>
-          <h5>You got discount of ${this.props.totalPrice - this.props.totalDiscountedPrice}</h5>
           {this.renderItemsIntoAList(this.props.itemsInsideCart)}
         </ul>
+
       </div>
     );
   }
@@ -32,10 +57,9 @@ class ItemListComponent extends Component {
 
 function mapsStateToProps(state) {
   return {
-    itemsInsideCart: state.itemsInsideCart,
-    itemCounter: state.itemCounter,
-    totalPrice: state.totalPrices.totalPrice,
-    totalDiscountedPrice: state.totalPrices.totalDiscountedPrice
+    itemsInsideCart:  state.itemsInsideCart,
+    itemCounter:      state.itemCounter,
+    summurizedPrices:  state.summurizedPrices,
   }
 }
-export default connect(mapsStateToProps)(ItemListComponent)
+export default connect(mapsStateToProps)(CartComponent)

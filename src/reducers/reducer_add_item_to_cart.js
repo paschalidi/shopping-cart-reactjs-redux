@@ -1,4 +1,4 @@
-import { ADD_ITEM_TO_CART } from '../actions/types'
+import { ADD_ITEM_TO_CART } from '../actions/types';
 
 const INITIAL_STATE = [{ title: null }];
 
